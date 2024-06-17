@@ -8,8 +8,30 @@
   padding: 10px;
   background-color: #f1f1f1;
 }
+#placeholder {
+  position: fixed; /* Ensures the element stays in place when scrolling */
+  top: 0;
+  left: 0;
+  min-width: 100vw;
+  min-height: 100vh; /* Covers the entire viewport */
+  background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+  color: white; /* Text color */
+  text-align: center; /* Centers the text content */
+  display: flex; /* Allows vertical and horizontal centering of content */
+  justify-content: center; /* Centers content horizontally */
+  align-items: center; /* Centers content vertically */
+  z-index: 100; /* Ensures the placeholder is displayed on top of other elements */
+}
 </style>
 
+<div id="placeholder">
+  <h1>This website is under development!</h1>
+  <br>
+  <p>Check back soon for the full experience.</p>
+  <a href="/resume">My Resume</a>
+</div>
+
+<!--
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">  
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -28,5 +50,6 @@
 
 <div class="footer">
   <img src="../favicon.ico">
-  <!--<img src="../assets/2560px-Node.js_logo.svg.png" style="min-height: 5vh; min-width: 5vw;">-->
+  <img src="../assets/2560px-Node.js_logo.svg.png" style="height: 5vh; width: 5vw;">
 </div>
+-->
