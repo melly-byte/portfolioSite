@@ -10,8 +10,6 @@
 }
 #placeholder {
   position: fixed; /* Ensures the element stays in place when scrolling */
-  top: 0;
-  left: 0;
   min-width: 100vw;
   min-height: 100vh; /* Covers the entire viewport */
   background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
@@ -24,13 +22,16 @@
 }
 </style>
 
-<div id="placeholder">
-  <h1>This website is under development!</h1>
-  <br>
-  <p>Check back soon for the full experience.</p>
-  <a href="/resume">My Resume</a>
-</div>
+@if(showPlaceholder) {
+<div style="color: white; text-align: center; align-items: flex;">
+  <h1>This website is under development!<br /></h1>
 
+  <p><br/>Check back soon for the full experience.</p>
+  <a routerLink="/resume" (click)="hidePlaceholder()"><br>My Resume</a>
+</div>
+}
+
+<router-outlet></router-outlet>
 <!--
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">  
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
