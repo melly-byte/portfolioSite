@@ -9,4 +9,5 @@ import { PdfViewerModule } from 'ng2-pdf-viewer';
   styleUrl: './about.component.css'
 })
 export class AboutComponent {
+  src: string = 'assets/MC_R_NP.pdf';
 }
