@@ -1,5 +1,6 @@
 import { Component} from '@angular/core';
 import { getUrl } from '@aws-amplify/storage';
+import { OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-about',
@@ -10,6 +11,11 @@ import { getUrl } from '@aws-amplify/storage';
 })
 
 
-export class AboutComponent {
+export class AboutComponent implements OnInit {
+  url: string | undefined;
 
+  async ngOnInit() {
+    const resumeLink = await getUrl({path: 'resume/MC_R_NP.pdf'});
+    this.url = resumeLink.url.toString();
+  }
 }
