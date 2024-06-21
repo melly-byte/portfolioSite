@@ -19,6 +19,6 @@ export class AboutComponent implements OnInit {
 
   async ngOnInit() {
     const resumeLink = await getUrl({path: 'resume/MC_R_NP.pdf'});
-    this.url = resumeLink ? this.sanitizer.bypassSecurityTrustResourceUrl(resumeLink.url.toString()) : undefined;
+    //this.url = resumeLink ? this.sanitizer.bypassSecurityTrustResourceUrl(resumeLink.url.toString()) : undefined;
   }
 }
