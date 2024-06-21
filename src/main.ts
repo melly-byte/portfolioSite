@@ -4,8 +4,8 @@ import { AppComponent } from './app/app.component';
 import { Amplify } from 'aws-amplify';
 
 //Dev env only
-//import outputs from '../amplify_outputs.json';
-//Amplify.configure(outputs);
+import outputs from '../amplify_outputs.json';
+Amplify.configure(outputs);
 
 bootstrapApplication(AppComponent, appConfig)
   .catch((err) => console.error(err));
