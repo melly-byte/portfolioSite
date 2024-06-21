@@ -18,7 +18,11 @@ export class AboutComponent implements OnInit {
   constructor(private sanitizer: DomSanitizer) {}
 
   async ngOnInit() {
-    //const resumeLink = await getUrl({path: 'resume/MC_R_NP.pdf'});
-    //this.url = resumeLink ? this.sanitizer.bypassSecurityTrustResourceUrl(resumeLink.url.toString()) : undefined;
+    try{
+      const resumeLink = await getUrl({path: 'resume/MC_R_NP.pdf'});
+      this.url = resumeLink ? this.sanitizer.bypassSecurityTrustResourceUrl(resumeLink.url.toString()) : undefined;
+    } catch(error) {
+      console.error('Error fetching file: ', error);
+    }
   }
 }
