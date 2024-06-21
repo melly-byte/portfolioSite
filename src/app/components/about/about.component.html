@@ -1,15 +1,12 @@
-<!--<pdf-viewer src="../../../assets/MC_R_NP.pdf"
-            style="display: block; width: 100vw; height: 100vh; justify-content: center;"></pdf-viewer>
+<!-- Keeping this in case I want to use ng2-pdf-viewer 
+<pdf-viewer 
+    src="../../../assets/MC_R_NP.pdf"
+    style="display: block; 
+    width: 100vw; height: 100vh; justify-content: center;">
+</pdf-viewer>
 -->
 
 <h1>Placeholder text</h1>
-<h2>Link: {{url}}</h2>
-<!--
-<h2>blahblah</h2>
-<h2>{{resumeLinkString}}</h2>
--->
-<iframe [src]='url'></iframe>
-<!---
-<h2>blahblahblah</h2>
-<iframe src={resumeLinkUrl.toString()}></iframe>
--->
+<object [data]="url" type="application/pdf" width="100%" height="600px">
+  <p>Your web browser does not support PDFs.</p>
+</object>

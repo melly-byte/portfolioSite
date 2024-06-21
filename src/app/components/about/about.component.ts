@@ -1,4 +1,5 @@
-import { Component} from '@angular/core';
+import { Component } from '@angular/core';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { getUrl } from '@aws-amplify/storage';
 import { OnInit } from '@angular/core';
 
@@ -12,10 +13,16 @@ import { OnInit } from '@angular/core';
 
 
 export class AboutComponent implements OnInit {
-  url: string | undefined;
+  url: SafeResourceUrl | undefined;
+
+  constructor(private sanitizer: DomSanitizer) {}
 
   async ngOnInit() {
     const resumeLink = await getUrl({path: 'resume/MC_R_NP.pdf'});
-    this.url = resumeLink.url.toString();
+    this.url = resumeLink ? this.sanitizer.bypassSecurityTrustResourceUrl(resumeLink.url.toString()) : undefined;
   }
+  /*
+  get trustedPdfUrl() {
+    return this.url ? this.sanitizer.bypassSecurityTrustResourceUrl(this.url) : null;
+  }*/
 }
