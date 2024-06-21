@@ -12,7 +12,8 @@ import { OnInit } from '@angular/core';
 })
 
 
-export class AboutComponent implements OnInit {
+export class AboutComponent /*implements OnInit*/ {
+  /*
   url: SafeResourceUrl | undefined;
 
   constructor(private sanitizer: DomSanitizer) {}
