@@ -1,13 +1,28 @@
-import { Component, NgModule } from '@angular/core';
-import { PdfViewerModule } from 'ng2-pdf-viewer';
+import { Component } from '@angular/core';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { getUrl } from '@aws-amplify/storage';
+import { OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-about',
   standalone: true,
-  imports: [PdfViewerModule],
+  imports: [],
   templateUrl: './about.component.html',
   styleUrl: './about.component.css'
 })
-export class AboutComponent {
-  src: string = 'assets/MC_R_NP.pdf';
+
+
+export class AboutComponent implements OnInit {
+  url: SafeResourceUrl | undefined;
+
+  constructor(private sanitizer: DomSanitizer) {}
+
+  async ngOnInit() {
+    try{
+      const resumeLink = await getUrl({path: 'resume/MC_R_NP.pdf'});
+      this.url = resumeLink ? this.sanitizer.bypassSecurityTrustResourceUrl(resumeLink.url.toString()) : undefined;
+    } catch(error) {
+      console.error('Error fetching file: ', error);
+    }
+  }
 }
