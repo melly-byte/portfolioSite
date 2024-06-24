@@ -1,5 +1,15 @@
-import { Handler } from "aws-lambda";
+import { APIGatewayProxyHandler, Handler } from "aws-lambda";
 
-export const handler: Handler = async (event, context) => {
-    return "Hello World!";
+export const handler: APIGatewayProxyHandler = async (event) => {
+    //return "Hello World!";
+
+    console.log("event", event);
+    return {
+        statusCode: 200,
+        headers: {
+            "Access-Control-Allow-Origin": "*",
+            "Access-Control-Allow-Headers": "*",
+        },
+        body: JSON.stringify("Hello World!"),
+    };
 };

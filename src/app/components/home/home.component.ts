@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
-import { post } from '@aws-amplify/api';
-import { sayHello } from '../../../../amplify/functions/functionTest/resource';
+import { get } from 'aws-amplify/api'
+//import { post } from '@aws-amplify/api';
+//import { OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-home',
@@ -10,13 +11,18 @@ import { sayHello } from '../../../../amplify/functions/functionTest/resource';
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
-  /*
-  async onClick() {
+
+  async callFunc() {
     try {
-      const response = sayHello;
-      console.log('Response: ', response);
+      const restOp = get({
+        apiName: 'RestApi',
+        path: '/hello',
+      });
+      const response = await restOp.response;
+      const responseBody = await response.body.text();
+      console.log('Response: ', responseBody);
     } catch (error) {
       console.error('Error calling function: ', error);
     }
-  }*/
+  }
 }

@@ -6,5 +6,14 @@ import outputs from '../amplify_outputs.json';
 
 Amplify.configure(outputs);
 
+const currConfig = Amplify.getConfig();
+Amplify.configure({
+  ...currConfig,
+  API: {
+    ...currConfig.API,
+    REST: outputs.custom.API,
+  },
+})
+
 bootstrapApplication(AppComponent, appConfig)
   .catch((err) => console.error(err));
