@@ -1,7 +1,6 @@
 import { HttpClient } from "@angular/common/http";
-import { environment } from "../../../environment";
 import { Injectable } from "@angular/core";
-import { get } from "aws-amplify/api";
+import { environment } from "../../../environment";
 
 //api root: https://www.bungie.net/Platform
 

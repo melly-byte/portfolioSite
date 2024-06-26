@@ -4,6 +4,8 @@ import { OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { environment } from '../../../../environment';
 
+const hunterId = environment.HUNTER_CHAR_ID;
+
 @Component({
   selector: 'app-projects',
   standalone: true,
@@ -16,13 +18,12 @@ import { environment } from '../../../../environment';
 export class ProjectsComponent implements OnInit{
   invReturn: any;
   contentSrc = "https://www.bungie.net/common/destiny2_content/screenshots/";
-  hunterId = environment.HUNTER_CHAR_ID;
 
   constructor(private destinyApiService: DestinyApiService) {}
 
   async ngOnInit() {
     try {
-      this.invReturn = this.destinyApiService.getCharacterInventory(this.hunterId)?.subscribe(
+      this.invReturn = this.destinyApiService.getCharacterInventory(hunterId)?.subscribe(
         data => {this.invReturn = data.Response.equipment.data},
       );
       console.log('Character Inventory: ', this.invReturn);

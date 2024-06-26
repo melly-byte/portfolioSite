@@ -5,6 +5,9 @@ export const storage = defineStorage({
     access: (allow) => ({
         'resume/*': [
             allow.guest.to(['read'])
+        ],
+        'destDb/*': [
+            allow.guest.to(['read'])
         ]
     })
 });
