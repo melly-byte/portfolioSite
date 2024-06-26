@@ -5,6 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "config": "ts-node ./set-env.ts",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
@@ -23,6 +24,7 @@
     "bootstrap": "^5.3.3",
     "core-js": "^3.37.1",
     "rxjs": "~7.8.0",
+    "sql.js": "^1.10.3",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.3"
   },
