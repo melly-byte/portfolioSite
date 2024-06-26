@@ -39,5 +39,6 @@ testem.log
 
 # System files
 amplify_outputs.json
+environment.ts
 .DS_Store
 Thumbs.db
