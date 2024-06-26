@@ -28,6 +28,7 @@ export class DestinyApiService {
 
     getCharacterInventory(characterId: string) {
         const apiKey = environment.BUNGIE_API_KEY || '';
+        console.log(apiKey);
         const membershipId = environment.DEST_MEMBER_ID || '';
 
         const path = `https://www.bungie.net/Platform/Destiny2/3/Profile/${membershipId}/Character/${characterId}/?components=205`;
