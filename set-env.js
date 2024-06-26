@@ -4,11 +4,6 @@ const setEnv = () => {
 
     const targetPath = './environment.ts';
 
-    //Written during build
-    require('dotenv').config({
-        path: './.env'
-    });
-
     const envConfigFile = `export const environment = {
         BUNGIE_API_KEY: '${process.env.BUNGIE_API_KEY}',
         DEST_MEMBER_ID: '${process.env.DEST_MEMBER_ID}',
