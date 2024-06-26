@@ -1,6 +1,6 @@
 import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
-import { environment } from "../../../environment";
+import { environment } from "../../environments/environment";
 
 //api root: https://www.bungie.net/Platform
 
@@ -27,8 +27,8 @@ export class DestinyApiService {
     constructor(private http: HttpClient) {}
 
     getCharacterInventory(characterId: string) {
-        const apiKey = environment.BUNGIE_API_KEY;
-        const membershipId = environment.DEST_MEMBER_ID;
+        const apiKey = environment.BUNGIE_API_KEY || '';
+        const membershipId = environment.DEST_MEMBER_ID || '';
 
         const path = `https://www.bungie.net/Platform/Destiny2/3/Profile/${membershipId}/Character/${characterId}/?components=205`;
 
