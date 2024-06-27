@@ -4,7 +4,6 @@ import { OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { environment } from '../../../environments/environment';
 
-const hunterId = environment.HUNTER_CHAR_ID || '';
 
 @Component({
   selector: 'app-projects',
@@ -15,12 +14,13 @@ const hunterId = environment.HUNTER_CHAR_ID || '';
   styleUrl: './projects.component.css'
 })
 
-export class ProjectsComponent implements OnInit{
+export class ProjectsComponent /*implements OnInit*/{
   invReturn: any;
   contentSrc = "https://www.bungie.net/common/destiny2_content/screenshots/";
 
   constructor(private destinyApiService: DestinyApiService) {}
 
+  /*
   async ngOnInit() {
     try {
       this.invReturn = this.destinyApiService.getCharacterInventory(hunterId)?.subscribe(
@@ -30,5 +30,5 @@ export class ProjectsComponent implements OnInit{
     } catch (error) {
       console.error('Error fetching character inventory: ', error);
     }
-  }
+  }*/
 }

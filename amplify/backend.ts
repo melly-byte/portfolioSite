@@ -58,8 +58,6 @@ backend.addOutput({
         region: Stack.of(myRestApi).region,
         apiName: myRestApi.restApiName,
       },
-    },
-    destinyApiProxy: {
       [destinyApiProxyApi.restApiName]: {
         endpoint: destinyApiProxyApi.url,
         region: Stack.of(destinyApiProxyApi).region,

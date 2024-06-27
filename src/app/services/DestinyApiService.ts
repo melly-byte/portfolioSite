@@ -25,7 +25,7 @@ interface item {
 export class DestinyApiService {
 
     constructor(private http: HttpClient) {}
-
+    /*
     getCharacterInventory(characterId: string) {
         const apiKey = environment.BUNGIE_API_KEY || '';
         console.log(apiKey);
@@ -43,5 +43,5 @@ export class DestinyApiService {
             console.error('Error fetching character inventory: ', error);
             return null;
         }
-    }
+    }*/
 }
