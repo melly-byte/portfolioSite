@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { DestinyApiService } from '../../services/DestinyApiService';
 import { OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { environment } from '../../../environments/environment';
 
 
 @Component({
