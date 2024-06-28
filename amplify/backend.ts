@@ -4,7 +4,6 @@ import { data } from './data/resource';
 import { storage } from './storage/resource';
 import { sayHello } from './functions/functionTest/resource';
 import { LambdaRestApi } from 'aws-cdk-lib/aws-apigateway';
-import { Function } from 'aws-cdk-lib/aws-lambda';
 import { Stack } from 'aws-cdk-lib';
 import { destinyApiProxy } from './functions/destiny-api-proxy/resource';
 /**
@@ -12,7 +11,7 @@ import { destinyApiProxy } from './functions/destiny-api-proxy/resource';
  */
 const backend = defineBackend({
   auth,
-  //data,
+  data,
   storage,
   sayHello,
   destinyApiProxy,
