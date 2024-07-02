@@ -2,8 +2,8 @@ import { defineBackend } from '@aws-amplify/backend';
 import { auth } from './auth/resource';
 import { data } from './data/resource';
 import { storage } from './storage/resource';
-import { sayHello } from './functions/functionTest/resource';
 import { LambdaRestApi } from 'aws-cdk-lib/aws-apigateway';
+import { aws_dynamodb } from 'aws-cdk-lib';
 import { Stack } from 'aws-cdk-lib';
 import { destinyApiProxy } from './functions/destiny-api-proxy/resource';
 /**
@@ -13,26 +13,8 @@ const backend = defineBackend({
   auth,
   data,
   storage,
-  sayHello,
   destinyApiProxy,
 });
-
-//Test stack for restAPI
-const sayHelloTestStack = backend.createStack("say-hello-test-stack");
-
-const myRestApi = new LambdaRestApi(sayHelloTestStack, "RestApi", {
-  handler: backend.sayHello.resources.lambda,
-  proxy: false,
-  defaultCorsPreflightOptions: {
-    allowOrigins: ['*'],
-    allowMethods: ['GET'],
-    allowHeaders: ['*'],
-    },
-  }
-);
-
-const helloResource = myRestApi.root.addResource('hello');
-helloResource.addMethod('GET');
 
 //Stack for destinyApiProxy
 const destinyApiProxyStack = backend.createStack("destiny-api-proxy-stack");
@@ -48,15 +30,23 @@ const destinyApiProxyApi = new LambdaRestApi(destinyApiProxyStack, "DestinyApiPr
 });
 const destinyResource = destinyApiProxyApi.root.addResource('getCharacter');
 destinyResource.addMethod('GET');
-//-------------------------
+//--------------------------------------------------------------------------------------------------
+
+// Stack for Destiny2TableItems
+const destiny2TableItemsStack = backend.createStack("destiny2-table-items-stack");
+
+const externalTable = aws_dynamodb.Table.fromTableName(
+  destiny2TableItemsStack,
+  "ExternalDestiny2Table",
+  "Destiny2TableItems"
+);
+
+//--------------------------------------------------------------------------------------------------
+
+//Lambda output
 backend.addOutput({
   custom: {
     API: {
-      [myRestApi.restApiName]: {
-        endpoint: myRestApi.url,
-        region: Stack.of(myRestApi).region,
-        apiName: myRestApi.restApiName,
-      },
       [destinyApiProxyApi.restApiName]: {
         endpoint: destinyApiProxyApi.url,
         region: Stack.of(destinyApiProxyApi).region,
@@ -65,3 +55,5 @@ backend.addOutput({
     },
   },
 });
+// External Table output
+backend.data.addDynamoDbDataSource("ExternalDestiny2Table", externalTable);

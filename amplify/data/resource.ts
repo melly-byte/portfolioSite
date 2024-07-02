@@ -8,10 +8,21 @@ and "delete" any "Todo" records.
 =========================================================================*/
 const schema = a.schema({
   DestinyItems: a.model({
+      hash: a.integer().required(),
       name: a.string(),
       icon: a.string(),
     })
+    .identifier(['hash'])
     .authorization((allow) => [allow.guest()]),
+
+    Destiny2Items: a.customType({
+      itemHash: a.integer().required(),
+      description: a.string(),
+      name: a.string(),
+      icon: a.string()
+    })
+
+    // Custom queries/mutations for Destiny2Items (Expand on this in future commit)
 });
 
 export type Schema = ClientSchema<typeof schema>;
