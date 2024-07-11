@@ -37,8 +37,8 @@ const destiny2TableItemsStack = backend.createStack("destiny2-table-items-stack"
 
 const externalTable = aws_dynamodb.Table.fromTableName(
   destiny2TableItemsStack,
-  "ExternalDestiny2Table",
-  "Destiny2TableItems"
+  "destiny2TableItems",
+  "destiny2TableItems"
 );
 
 //--------------------------------------------------------------------------------------------------
@@ -56,4 +56,4 @@ backend.addOutput({
   },
 });
 // External Table output
-backend.data.addDynamoDbDataSource("ExternalDestiny2Table", externalTable);
+backend.data.addDynamoDbDataSource("destiny2TableItems", externalTable);
